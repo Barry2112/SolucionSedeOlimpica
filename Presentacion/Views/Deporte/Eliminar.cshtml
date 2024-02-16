@@ -1,0 +1,27 @@
+﻿@model Presentacion.Models.T_Deporte
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1>Eliminar Deporte</h1>
+    </div>
+    <br />
+    <div class="card-body">
+
+        <form asp-action="Eliminar" asp-controller="Deporte" method="post">
+
+            <input name="id_deporte" type="hidden" class="form-control" value="@Model.ID_Deporte">
+
+            <div class="alert alert-danger" role="alert">
+                ¿Esta seguro de eliminar el deporte "@Model.Nombres_Deporte"?
+            </div>
+
+            <button type="submit" class="btn btn-primary">Eliminar Deporte</button>
+        </form>
+        <button onclick="window.location.href = '@Url.Action("Listar", "Deporte")'" class="btn btn-danger">Salir</button>
+    </div>
+</div>

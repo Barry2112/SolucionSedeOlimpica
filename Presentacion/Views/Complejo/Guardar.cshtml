@@ -1,0 +1,63 @@
+﻿@model List<Presentacion.Models.T_Deporte>
+
+@{
+    ViewBag.Title = "Guardar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="card">
+    <div class="card-header">
+        <h1>Crear complejo con deporte unico</h1>
+    </div>
+    <br />
+    <div class="card-body">
+        <form id="deporteForm" asp-action="Guardar" asp-controller="Complejo" method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Selecciona la sede:</label>
+                <select name="ID_SEDE" class="form-control">
+                    <option value="1">LIMA 2019</option>
+                    <option value="2">SANTIAGO 2023</option>
+                    <option value="3">TORONTO 2015</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Nombre Complejo</label>
+                <input name="Nombre_Complejo" type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Deporte</label>
+                <select name="ID_Deporte" class="form-control">
+                    @foreach (var deporte in Model)
+                    {
+                        <option value="@deporte.ID_Deporte">@deporte.Nombres_Deporte</option>
+                        
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Localizacion Complejo</label>
+                <input name="Localizacion" type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Jefe de la organizacion</label>
+                <input name="Jefe_Organizacion" type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Presupuesto</label>
+                <input name="Presupuesto" type="text" class="form-control">
+            </div>
+
+            <br />
+            <button type="submit" class="btn btn-primary">Registrar Deporte</button>
+        </form>
+        <button onclick="window.location.href = '@Url.Action("Listar", "Complejo")'" class="btn btn-danger">Salir</button>
+    </div>
+</div>
+ 

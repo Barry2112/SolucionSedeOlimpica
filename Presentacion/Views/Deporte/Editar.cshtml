@@ -1,0 +1,40 @@
+﻿@model Presentacion.Models.T_Deporte
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1>Editar Deporte</h1>
+    </div>
+    <br />
+    <div class="card-body">
+        <input name="ID_Deporte" type="hidden" class="form-control">
+        <form asp-action="Editar" asp-controller="Deporte" method="post">
+            <input name="id_deporte" type="hidden" class="form-control" value="@Model.ID_Deporte">
+            <div class="mb-3">
+                <label class="form-label">Nombre Deporte</label>
+                <input name="Nombres_Deporte" type="text" class="form-control" value="@Model.Nombres_Deporte">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descripcion Deporte</label>
+                <input name="Descripcion_Deporte" type="text" class="form-control" value="@Model.Descripcion_Deporte"> 
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Equipo Deportivo</label>
+                <input name="Equipo" type="text" class="form-control" value="@Model.Equipo"> 
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Editar Deporte</button>
+        </form>
+        <button onclick="window.location.href = '@Url.Action("Listar", "Deporte")'" class="btn btn-danger">Salir</button>
+    </div>
+</div>
+
+<script>
+    console.log('ID Deporte:', @Model.ID_Deporte);
+</script>

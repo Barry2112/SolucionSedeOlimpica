@@ -1,0 +1,39 @@
+﻿  
+ @{
+    ViewBag.Title = "Guardar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="card">
+    <div class="card-header">
+        <h1>Crear Deporte</h1>
+    </div>
+    <br />
+    <div class="card-body">
+        <form asp-action="Guardar" asp-controller="Deporte" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nombre Deporte</label>
+                <input name="Nombres_Deporte" type="text" class="form-control">
+                <span asp-validation-for="Nombres_Deporte" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descripcion Deporte</label>
+                <input name="Descripcion_Deporte" type="text" class="form-control">
+                <span asp-validation-for="Descripcion_Deporte" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Equipo Deportivo</label>
+                <input name="Equipo" type="text" class="form-control">
+                <span asp-validation-for="Equipo" class="text-danger"></span>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Registrar Deporte</button>
+        </form>
+        <button onclick="window.location.href = '@Url.Action("Listar", "Deporte")'" class="btn btn-danger">Salir</button> 
+    </div>
+</div>
+
+

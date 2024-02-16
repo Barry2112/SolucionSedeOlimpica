@@ -1,0 +1,58 @@
+﻿@model Presentacion.Response.Response_ComplejoEdit 
+ 
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1>Editar Complejo</h1>
+    </div>
+    <br />
+    <div class="card-body"> 
+        <form asp-action="Editar" asp-controller="Complejo" method="post">
+            <input name="ID_Complejo" type="hidden" class="form-control" value="@Model.ID_Complejo">
+
+            <div class="mb-5">
+                <label class="form-label">Nombre Complejo</label>
+                <input name="Nombre_Complejo" type="text" class="form-control" value="@Model.Nombre_Complejo">
+            </div>
+
+            
+
+            <div class="mb-3">
+                <label class="form-label">Deporte</label>
+                <select name="ID_Deporte" class="form-control">
+                    @foreach (var deporte in Model.ListaComplejos)
+                    {
+                        <option value="@deporte.ID_Deporte">"@deporte.Nombres_Deporte"</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Localizacion Complejo</label>
+                <input name="Localizacion" type="text" class="form-control" value="@Model.Localizacion">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Jefe de la organizacion</label>
+                <input name="Jefe_Organizacion" type="text" class="form-control" value="@Model.Jefe_Organizacion">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Presupuesto</label>
+                <input name="Presupuesto" type="text" class="form-control" value=@Model.Presupuesto>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Editar Complejo</button>
+        </form>
+        <button onclick="window.location.href = '@Url.Action("Listar", "Complejo")'" class="btn btn-danger">Salir</button>
+    </div>
+</div>
+
+<script>
+    console.log('ID Complejo:', @Model.ID_Complejo);
+</script>
+

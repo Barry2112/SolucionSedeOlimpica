@@ -1,0 +1,59 @@
+﻿
+@model List<Presentacion.Models.T_Deporte>
+
+@{
+    ViewBag.Title = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="card">
+    <div class="card-header">
+        <h1>Lista de Deportes</h1>
+    </div>
+    <br />
+    <div class="card-body">
+        <button onclick="window.location.href = '@Url.Action("Guardar", "Deporte")'" class="btn btn-success"> Crear deporte</button>
+
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Equipo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombres_Deporte</td>
+                        <td>@item.Descripcion_Deporte</td>
+                        <td>@item.Equipo</td>
+                        <td>
+                            <button onclick="editarDeporte(this)" class="btn btn-primary btn-sm" data-id="@item.ID_Deporte">Editar deporte</button>
+                            <button onclick="eliminarDeporte(this)" class="btn btn-danger btn-sm" data-id="@item.ID_Deporte">Eliminar deporte</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function editarDeporte(button) {
+        var idDeporte = button.getAttribute("data-id");
+        window.location.href = '@Url.Action("Editar", "Deporte")?ID_Deporte=' + idDeporte;
+    }
+</script>
+
+
+<script>
+    function eliminarDeporte(button) {
+        var idDeporte = button.getAttribute("data-id");
+        window.location.href = '@Url.Action("Eliminar", "Deporte")?ID_Deporte=' + idDeporte;
+    }
+</script>

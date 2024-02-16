@@ -1,0 +1,70 @@
+﻿
+@model List<Presentacion.Response.Response_Complejo>
+
+@{
+    ViewBag.Title = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="card">
+    <div class="card-header">
+        <h1>Lista de Complejos</h1>
+    </div>
+    <br />
+    <div class="card-body">
+        <button onclick="window.location.href = '@Url.Action("Guardar", "Complejo")'" class="btn btn-success"> Crear Complejo Deporte Unico</button>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sede Olimpica</th>
+                    <th>Tipo de Complejo</th>
+                    <th>Deporte</th>
+                    <th>Nombre de Complejo</th>
+                    <th>Localizacion</th>
+                    <th>Jefe Organizacion</th>
+                    <th>Area Total</th>
+                    <th>Presupuesto</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Nombre_Sede_Olimpica</td>
+                    <td>@item.Descripcion_Tipo_Complejo</td>
+                    <td>@item.Nombre_Deporte</td> 
+                    <td>@item.Nombre_Complejo</td>
+                    <td>@item.Localizacion</td>
+                    <td>@item.Jefe_Organizacion</td>
+                    <td>@item.Area_Total</td>
+                    <td>@item.Presupuesto</td>
+                    <td>
+                        <button onclick="editarComplejo(this)" class="btn btn-primary btn-sm" data-id="@item.ID_Complejo">Editar complejo</button>
+                        <button onclick="eliminarComplejo(this)" class="btn btn-danger btn-sm" data-id="@item.ID_Complejo">Eliminar complejo</button>
+                    </td>
+                </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function editarComplejo(button) {
+        var idComplejo = button.getAttribute("data-id");
+        window.location.href = '@Url.Action("Editar", "Complejo")?ID_Complejo=' + idComplejo;
+    }
+</script> 
+
+<script>
+    function eliminarComplejo(button) {
+        var idComplejo = button.getAttribute("data-id");
+        window.location.href = '@Url.Action("Eliminar", "Complejo")?ID_Complejo=' + idComplejo;
+    }
+</script>
+
+
